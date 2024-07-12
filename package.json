@@ -2,14 +2,23 @@
   "name": "general-purpose-backend",
   "scripts": {
     "build": "tsc && tsc-alias",
-    "dev": "NODE_PATH=src nodemon index.ts"
+    "dev": "NODE_PATH=src nodemon index.ts",
+    "migrate:dev": "npx dotenv -e .env -- prisma migrate dev",
+    "db:push": "npx dotenv -e .env -- prisma db push",
+    "migrate:reset": "npx dotenv -e .env -- prisma migrate reset",
+    "db:seed": "npx dotenv -e .env -- prisma db seed",
+    "prisma:generate": "npx dotenv -e .env -- prisma generate",
+    "prisma:studio": "npx dotenv -e .env -- prisma studio",
+    "production:build": "npx prisma generate && npx prisma migrate deploy && next build"
   },
   "dependencies": {
+    "@prisma/client": "^5.16.2",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "nodemon": "^3.1.4",
+    "prisma": "^5.16.2",
     "typescript": "^5.5.3"
   },
   "devDependencies": {
