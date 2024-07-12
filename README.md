@@ -37,6 +37,12 @@ git push -u origin master
 Dont forget to change the readme :) 
 
 
+You need to create a .env file here with 1 varibale
+
+`DATABASE_URL="postgresql://{username}:{password}@{ip}:5432/{db-name}"`
+
+
+
 TODO: Fix the readme to explain the folder structure 
 
 
