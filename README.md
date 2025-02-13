@@ -45,45 +45,54 @@ You need to create a .env file here with 1 varibale
 
 TODO: Fix the readme to explain the folder structure 
 
+You need to create a .env file here with 1 varibale
 
+`DATABASE_URL="postgresql://{username}:{password}@{ip}:5432/{db-name}"`
 ## Features / Technologies
-- Express
 
-### Database / ORM
-- Prisma
+-   **Express.js** – Web framework for building APIs
+-   **Prisma** – ORM for database interactions
+-   **PostgreSQL** – Database
 
-## Folder Structure and guide for everything
-Starting from the top
+----------
 
-## Configs 
-Configs is where you should keep your environment variables, and nay other global configurations that you might need.
+## Folder Structure
 
-## Middleware
-Middleware is where you should keep all your middlewares and handlers
+### **📂 prisma/**
 
-- Context is already setup for you so you can use that for global state management
-Currently it has the theme switch and the `isAuthenticated` state
-- Helpers for any global helper functions you may need
-- API for all your api calls
-- Queries for all the tanstack queries 
+Contains the **database schema** and **migrations**.
 
+#### **📂 config/**
 
-## Pages
-Following Tanstack router's flow you came up with (omega genius) each page should be split in its own folder with the same name as the page.
-Each page should have
+Stores **configuration files**, such as database connections and email setup.
 
-- index
-- Loading
-- Error
+#### **📂 helper/**
 
-On top of that you can add extras like
+Contains **utility functions** like error handling, compression, and common helpers.
 
-- components (folder for components that are only used in this page)
-- PageName.styles.css
-- PageName.hooks.tsx
-- PageName.controller.tsx
-- PageName.model.ts
+#### **📂 middleware/**
 
+Middleware functions for **authentication, logging, and request handling** etc...
+
+#### **📂 modules/**
+
+Each module handles a specific **business logic** (e.g., `Scheduler`, `DataExtractor`).  
+Each module contains:
+
+-   `.controller.ts` – Defines the module’s business logic.
+-   `.helper.ts` – Contains helper functions specific to the module.
+-   `.model.ts` – Holds any data structures necessary for the component to operate.
+-   `.router.ts` – Defines the API routes.
+-   `.types.ts` – Holds TypeScript types for the module.
+
+----------
+
+## Guidelines
+
+-   Keep modules **organized and modular**.
+-   Follow **best practices for Express and Prisma**.
+-   Keep dependencies **up to date** (automate this if possible).
+-   Use **environment variables** for sensitive information.
 
 
 # Make sure you keep everything up to date, or at some point add a bot that will do that for you 
